@@ -9,7 +9,6 @@ screen.bgcolor("black")
 screen.title("pong game")
 screen.tracer(0)
 
-
 paddle1 = Paddle((350, 0))
 paddle2 = Paddle((-350, 0))
 ball = Ball()
@@ -27,5 +26,8 @@ while game_is_on:
     time.sleep(0.1)
     ball.move()
 
+    # detect collision with wall
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
 
 screen.exitonclick()

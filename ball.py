@@ -6,6 +6,11 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("white")
         self.penup()
+        self.move_x = 10
+        self.move_y = 10
+    def move(self):
+        self.goto(self.xcor()+self.move_x, self.ycor()+self.move_y)
 
-    def move(self, move_distance=10):
-        self.goto(self.xcor()+move_distance, self.ycor()+move_distance)
+    def bounce(self):
+        self.move_y *= -1
+
