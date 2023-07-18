@@ -34,10 +34,8 @@ while game_is_on:
 
     # detect collision with paddles
     if ball.distance(r_paddle) < 50 and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330:
-        ball.move_speed *= 0.7
+        ball.move_speed *= 0.8
         ball.bounce_x()
-
-
 
     # detect collision with right wall (r_paddle misses)
     if ball.xcor() > 350:
@@ -48,6 +46,14 @@ while game_is_on:
     if ball.xcor() < -350:
         ball.reset_position()
         scoreboard.increase_r_score()
+
+    if scoreboard.l_score > 9:
+        scoreboard.game_over("LEFT")
+        game_is_on = False
+
+    if scoreboard.r_score > 9:
+        scoreboard.game_over("RIGHT")
+        game_is_on = False
 
 
 screen.exitonclick()
